@@ -1,0 +1,133 @@
+package pdsacw;
+import java.util.Scanner;
+import java.io.*;
+
+
+public class okayPDSA
+{
+    Scanner getdata = new Scanner(System.in);
+    
+    String[][] levelA ={{"Kamal nimal","sapumal kumara"}};
+    String checkLevel;//Level eka mokakda kiyala thorana eka
+    String[][] levelWords;//level wala wakya walata adala 
+    String[] sentences1;
+    String[] sentences2;
+    String typeWords;
+    String[][] typecheckWords; 
+    
+    int count0=0,count1=0,count2=0,typewordCount=0,correctcount=0,countB,netSpeed=0,levelWordCount=0,lessTypeWords=0,levelAResultcount=0;
+
+    double levelAResult=0,correctWordPrasentage=0,mulupramanayenHAriyata=0;
+    
+    public okayPDSA()
+    {        
+        
+        levelWords = new String[1][10];
+        typecheckWords = new String[1][10];
+
+        
+        
+        levelAResult=80;
+        //Level eka thora ganna eka
+            if(levelAResult>=80 && 100>=levelAResult )
+            {
+                System.out.println("Please Select Your Level");
+
+                System.out.println("01.Average");
+                System.out.println("02.Fluent");
+                System.out.println("03.Pro");
+                System.out.print("Enter Level Name = ");
+                checkLevel=getdata.nextLine();
+                System.out.println("");
+
+            }
+            
+        if (checkLevel.equals("Average"))
+        {
+            System.out.println("You selected Avarage level and Continu tasks");
+            
+        }
+            
+        for (int countC=0; countC<2;countC++)
+        {
+            
+            if (checkLevel.equals("Average"))
+            {
+             
+                System.out.println((count1+1)+"."+(levelA[count0][count1]));// Wakya Print Karanawa
+                sentences1 = levelA[count0][count1].split("[ ]");//wakaye wachana kadanawa
+
+                countB=0;
+                for (String sentence : sentences1) 
+                {
+                    for (int countA=0;countA==0; countA++) //me For eken karanne wachane wachane wena wenama array ekata da ganbnawa
+                    {
+                        
+                        sentence = sentence.trim();
+                        levelWords[count0][countB]= sentence;
+                        levelWordCount++;
+                    }
+                    countB++;
+                }
+                
+                typeWords= getdata.nextLine();//User input ganna veriable eka
+
+
+                sentences2 = typeWords.split("[ ]"); //userinput wachana kadana eka
+                
+                countB=0;
+                for (String sentence : sentences2) 
+                {
+                    for (int countA=0;countA==0; countA++)
+                    {
+                        sentence = sentence.trim();
+                        typecheckWords[count0][countB]= sentence;
+                        typewordCount++;
+                    }
+                    countB++;
+                }
+
+                for (int countD=0; countD<=typewordCount;countD++)
+                {
+                    if ((levelWords[count0][count1]).equals(typecheckWords[count0][count1]))
+                    {
+                        correctcount++;
+                    }
+                }
+                count1++;// anith wayata array eka maru karanawa
+            }
+            
+        }
+        
+        correctWordPrasentage = (correctcount*100)/typewordCount;
+        netSpeed = typewordCount-(typewordCount-correctcount);
+        lessTypeWords = levelWordCount-typewordCount;
+        mulupramanayenHAriyata = (correctcount*100)/levelWordCount;
+        System.out.println("Same words presantage is = "+correctWordPrasentage+"%");
+        System.out.println("Net Speed is = "+netSpeed);
+        System.out.println("not typed words = "+lessTypeWords);
+        System.out.println("winadiyata gahapu wachana ganana = "+typewordCount);
+        System.out.println("mulu gananin harriyata gahapu ganana= "+mulupramanayenHAriyata);
+        
+        if (mulupramanayenHAriyata>=80 && mulupramanayenHAriyata<=100)
+        {
+            levelAResultcount++;
+            
+        }
+        if (levelAResultcount>=2)
+        {
+            levelAResult= mulupramanayenHAriyata;
+        }
+            
+               
+    }
+    
+    
+    
+     public static void main(String[] args) 
+     {
+        
+             okayPDSA test = new okayPDSA();
+             
+    }
+}
